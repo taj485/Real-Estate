@@ -1,0 +1,13 @@
+version: '1'
+services:
+  frontend:
+    build:
+      context: ./real-estate-client
+    ports:
+      - "4200:80"
+
+  backend:
+    build:
+      context: ./real-estate-api
+    ports:
+      - "5000:80"
