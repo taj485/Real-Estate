@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -6,13 +7,17 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-   @ViewChild('loginModal') loginModal!: ElementRef;
+  
+  form = new FormGroup({
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
+  });
 
-  openModal() {
-    this.loginModal.nativeElement.show();
-  }
-
-  closeModal() {
-    this.loginModal.nativeElement.hide();
+  onSubmit() {
+    if (this.form.valid) {
+      console.log('Form submitted with values:', this.form.value);
+    } else {
+      alert("error")
+    }
   }
 }
