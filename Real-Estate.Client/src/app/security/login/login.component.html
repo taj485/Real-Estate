@@ -1,23 +1,32 @@
 <div class="flex-center">
-  <div class="card" style="width: 25rem;">
+  <div *ngIf="!showSpinner" class="card" style="width: 25rem;">
     <h5 class="card-header">Login</h5>
     <div class="card-body">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
           <input class="form-control" type="text" formControlName="email">
+          <app-validation-error [control]="ct['email']"></app-validation-error>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input class="form-control" type="password" formControlName="password">
+          <app-validation-error [control]="ct['password']"></app-validation-error>
         </div>
-      
+
         <div>
           <button class="btn btn-primary" style="margin-right: 10px;" type="submit">Login</button>
           <button class="btn btn-primary" type="submit">Register</button>
         </div>
-        
+
       </form>
     </div>
   </div>
+
+
+  <div *ngIf="showSpinner">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+
 </div>
