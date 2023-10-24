@@ -10,7 +10,7 @@ using Real_Estate.Data;
 
 namespace Real_Estate.Data.Migrations
 {
-    [DbContext(typeof(RealEstateContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20230924003337_initial")]
     partial class initial
     {
